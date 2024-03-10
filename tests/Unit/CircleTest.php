@@ -15,12 +15,14 @@ use PHPUnit\Framework\TestCase;
 class CircleTest extends TestCase
 
 {
-
-    public function test_it_count_circle_surface(): void
+/** 
+     * @dataProvider providerCorrectRadius
+     */
+    public function test_it_count_circle_surface(float $radius): void
     {
 
         // given that we have Circle object
-        $circle = new Circle(2);
+        $circle = new Circle($radius);
 
 
         // when we call get surface method
@@ -28,14 +30,16 @@ class CircleTest extends TestCase
 
         //then we assert we get it
 
-        $this->assertEquals(12.56, $surface);
+        $this->assertEquals(7.065, $surface);
     }
 
-
-    public function test_it_count_circle_perimeter(): void
+/** 
+     * @dataProvider providerCorrectRadius
+     */
+    public function test_it_count_circle_perimeter(float $radius): void
     {
         // given that we have Circle object
-        $circle = new Circle(3);
+        $circle = new Circle($radius);
 
 
         // when we call get surface method
@@ -43,11 +47,11 @@ class CircleTest extends TestCase
 
         //then we assert we get it
 
-        $this->assertEquals(18.84, $perimeter);
+        $this->assertEquals(9.42, $perimeter);
     }
 
     /**
-     * @dataProvider providerRadius
+     * @dataProvider providerUncorrectRadius
      */
     public function test_it_throw_wrong_value_exception(float $radius): void
     {
@@ -56,7 +60,13 @@ class CircleTest extends TestCase
         $circle = new Circle($radius);
     }
 
-    public static function providerRadius(): array
+    public static function providerCorrectRadius(): array
+    {
+        return [
+            [1.5]
+        ];
+    }
+    public static function providerUncorrectRadius(): array
     {
         return [
             [-1.5]

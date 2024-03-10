@@ -15,12 +15,14 @@ use App\Exceptions\WrongValueException;
 class SquareTest extends TestCase
 
 {
-
-    public function test_it_count_square_surface(): void
+    /** 
+     * @dataProvider providerCorrectSide
+     */
+    public function test_it_count_square_surface(float $side): void
     {
 
         // given that we have Circle object
-        $square = new Square(8);
+        $square = new Square($side);
 
 
         // when we call get surface method
@@ -28,37 +30,44 @@ class SquareTest extends TestCase
 
         //then we assert we get surface
 
-        $this->assertEquals(64, $surface);
+        $this->assertEquals(1.44, $surface);
     }
 
-
-    public function test_it_count_square_perimeter(): void
+    /** 
+     * @dataProvider providerCorrectSide
+     */
+    public function test_it_count_square_perimeter(float $side): void
     {
         // given that we have Rectangle object
-        $square = new Square(8);
+        $square = new Square($side);
 
 
         // when we call get surface method
         $perimeter =  $square->getPerimeter();
 
         //then we assert we get perimeter 
-        $this->assertEquals(32, $perimeter);
+        $this->assertEquals(4.8, $perimeter);
     }
 
     /** 
-    * @dataProvider providerSide
-    */
+     * @dataProvider providerUncorrectSide
+     */
     public function test_it_throw_wrong_value_exception(float $side): void
     {
-        $this->expectException(WrongValueException::class);        
+        $this->expectException(WrongValueException::class);
         $square = new Square($side);
-
-        
     }
-    public static function providerSide(): array
+    public static function providerUncorrectSide(): array
     {
         return [
-            [-1]
+            [-1.2]
+        ];
+    }
+
+    public static function providerCorrectSide(): array
+    {
+        return [
+            [1.2]
         ];
     }
 }
