@@ -45,10 +45,20 @@ class SquareTest extends TestCase
         $this->assertEquals(32, $perimeter);
     }
 
-    public function test_it_throw_wrong_value_exception(): void
+    /** 
+    * @dataProvider providerSide
+    */
+    public function test_it_throw_wrong_value_exception(float $side): void
     {
         $this->expectException(WrongValueException::class);        
-        $square = new Square(-1);
+        $square = new Square($side);
+
         
+    }
+    public static function providerSide(): array
+    {
+        return [
+            [-1]
+        ];
     }
 }

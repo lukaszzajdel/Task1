@@ -44,11 +44,21 @@ class RectangleTest extends TestCase
         //then we assert we get perimeter 
         $this->assertEquals(10, $perimeter);
     }
-
-    public function test_it_throw_wrong_value_exception(): void
+    /**
+     * @dataProvider providerSides
+     */
+    public function test_it_throw_wrong_value_exception(float $sideOne, float $sideTwo): void
     {
-        $this->expectException(WrongValueException::class);        
-        $rectangle = new Rectangle(3,-1);
-        
+        $this->expectException(WrongValueException::class);
+        $rectangle = new Rectangle($sideOne, $sideTwo);
+    }
+
+    public static function providerSides(): array
+    {
+        return [
+            [-1.2, 1.4],
+            [1.3, -1.3],
+            [-1.4, -1.2]
+        ];
     }
 }

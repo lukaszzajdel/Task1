@@ -46,9 +46,20 @@ class CircleTest extends TestCase
         $this->assertEquals(18.84, $perimeter);
     }
 
-    public function test_it_throw_wrong_value_exception(): void
+    /**
+     * @dataProvider providerRadius
+     */
+    public function test_it_throw_wrong_value_exception(float $radius): void
     {
-        $this->expectException(WrongValueException::class);        
-        $circle = new Circle(-3);
+
+        $this->expectException(WrongValueException::class);
+        $circle = new Circle($radius);
+    }
+
+    public static function providerRadius(): array
+    {
+        return [
+            [-1.5]
+        ];
     }
 }
