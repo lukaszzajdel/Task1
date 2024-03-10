@@ -14,8 +14,8 @@ use PHPUnit\Framework\TestCase;
 class CircleTest extends TestCase
 
 {
-    
-    public function test_it_count_circle_surface():void
+
+    public function test_it_count_circle_surface(): void
     {
 
         // given that we have Circle object
@@ -30,10 +30,10 @@ class CircleTest extends TestCase
         $this->assertEquals(12.56, $surface);
     }
 
-    
-        public function test_it_count_circle_perimeter(): void
-        {
-                  // given that we have Circle object
+
+    public function test_it_count_circle_perimeter(): void
+    {
+        // given that we have Circle object
         $circle = new Circle(3);
 
 
@@ -43,6 +43,5 @@ class CircleTest extends TestCase
         //then we assert we get it
 
         $this->assertEquals(18.84, $perimeter);
-        }
-
+    }
 }

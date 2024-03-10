@@ -14,12 +14,12 @@ use PHPUnit\Framework\TestCase;
 class RectangleTest extends TestCase
 
 {
-    
-    public function test_it_count_rectangle_surface():void
+
+    public function test_it_count_rectangle_surface(): void
     {
 
         // given that we have Circle object
-        $rectangle = new Rectangle(2,3);
+        $rectangle = new Rectangle(2, 3);
 
 
         // when we call get surface method
@@ -30,11 +30,11 @@ class RectangleTest extends TestCase
         $this->assertEquals(6, $surface);
     }
 
-    
-        public function test_it_count_rectangel_perimeter(): void
-        {
+
+    public function test_it_count_rectangel_perimeter(): void
+    {
         // given that we have Rectangle object
-        $rectangle = new Rectangle(2,3);
+        $rectangle = new Rectangle(2, 3);
 
 
         // when we call get surface method
@@ -42,6 +42,5 @@ class RectangleTest extends TestCase
 
         //then we assert we get perimeter 
         $this->assertEquals(10, $perimeter);
-        }
-
+    }
 }
