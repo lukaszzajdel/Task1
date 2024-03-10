@@ -7,6 +7,7 @@ namespace Tests\Unit;
 
 use App\Rectangle;
 use PHPUnit\Framework\TestCase;
+use App\Exceptions\WrongValueException;
 
 
 
@@ -42,5 +43,12 @@ class RectangleTest extends TestCase
 
         //then we assert we get perimeter 
         $this->assertEquals(10, $perimeter);
+    }
+
+    public function test_it_throw_wrong_value_exception(): void
+    {
+        $this->expectException(WrongValueException::class);        
+        $rectangle = new Rectangle(3,-1);
+        
     }
 }

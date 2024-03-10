@@ -6,6 +6,7 @@ namespace Tests\Unit;
 
 
 use App\Circle;
+use App\Exceptions\WrongValueException;
 use PHPUnit\Framework\TestCase;
 
 
@@ -43,5 +44,11 @@ class CircleTest extends TestCase
         //then we assert we get it
 
         $this->assertEquals(18.84, $perimeter);
+    }
+
+    public function test_it_throw_wrong_value_exception(): void
+    {
+        $this->expectException(WrongValueException::class);        
+        $circle = new Circle(-3);
     }
 }
